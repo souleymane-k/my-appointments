@@ -1,0 +1,7 @@
+.appointment {
+    background: #e7dede;
+    margin: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    border: solid, 1px;
+  }

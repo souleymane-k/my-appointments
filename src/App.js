@@ -1,23 +1,38 @@
-import logo from './logo.svg';
+import {useState} from 'react'
+import Header from './components/Header/Header'
+import Appointments from './components/Appointments/Appointments'
 import './App.css';
 
 function App() {
+  const [appointments, setAppointments] = useState(
+    [
+       {
+          "name":"aissatou kone",
+          "date": "Feb 15 at 3pm",
+          "description":"having lunch"
+       },
+       {
+           "name":"Leyla kone",
+           "date": "April 2 at 3pm",
+           "description":"celebrating Birthday and braiding her hair"
+        },
+        {
+           "name":"Lesha Cruz",
+           "date": "Jan 25th at 1pm",
+           "description":"Watchinf game together"
+        },
+        {
+           "name":"aissatou kone",
+           "date": "Feb 15 at 3pm",
+           "description":"having lunch"
+        }
+       ]
+ )
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="container">
+      <Header />
+      <Appointments appointments={appointments} />
+      
     </div>
   );
 }
