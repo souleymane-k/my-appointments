@@ -5,3 +5,7 @@
     cursor: pointer;
     border: solid, 1px;
   }
+  .appointment.reminder {
+    border: 5px solid green;
+  }
+  

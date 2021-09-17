@@ -2,16 +2,18 @@
  import Appointment from '../Appointment/Appointment'
  import './Appointments.css'
 
-const Appointments = ({appointments}) => {
+const Appointments = ({appointments, onDelete, onToggle}) => {
 
    
     return (
         <div className='appointments'>
             {appointments.map((appointment)=> (
             <Appointment 
-            text={appointment.name} 
-            daty={appointment.date} 
-            more={appointment.description}/> 
+            key={appointment.id}
+            appointment={appointment}
+            onDelete={onDelete}
+            onToggle={onToggle}
+            /> 
             ))}
         </div>
     )
