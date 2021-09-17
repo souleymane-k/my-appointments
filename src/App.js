@@ -1,9 +1,11 @@
 import {useState} from 'react'
 import Header from './components/Header/Header'
 import Appointments from './components/Appointments/Appointments'
+import AddAppointment from './components/AddAppointment/AddAppointment'
 import './App.css';
 
 function App() {
+  const [showAddAppointment, setShowAddAppointment]=useState(false);
   const [appointments, setAppointments] = useState(
     [
        {
@@ -51,21 +53,25 @@ const toggleReminder=(id)=>{
 
 // Add Appointment
 
-const AddAppointment=(appointment)=>{
-  const id = Math.floor(Math.random()*1000)+1
+const addAppointment=(appointment)=>{
+  const id = Math.floor(Math.random()*1000)+1;
   const newAppointment = {id, ...appointment}
-  setAppointments([appointments, newAppointment]);
+  setAppointments([...appointments, newAppointment]);
   
 }
 
   return (
     <div className="container">
-      <Header />
+      <Header 
+      onAdd={()=>setShowAddAppointment(!showAddAppointment)}
+      showAdd={showAddAppointment}
+       />
+      {showAddAppointment && <AddAppointment  onAdd={addAppointment}/>}
       { appointments.length > 0 ? <Appointments
        appointments={appointments}
        onDelete={deleteAppointment}
        onToggle={toggleReminder}
-       onAdd={AddAppointment}/> : 'Please Add An Appointment'}
+       /> : 'Please Add An Appointment'}
       
     </div>
   );

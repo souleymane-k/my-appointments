@@ -1,6 +1,7 @@
 import {useState} from 'react'
+import './AddAppointment.css'
 
-const AddAppointment = () => {
+const AddAppointment = ({onAdd}) => {
     const [name, setName]= useState('')
     const [date, setDate]= useState('')
     const [description, setDescription]= useState('')
@@ -8,11 +9,20 @@ const AddAppointment = () => {
     
 const onSubmit=(e)=>{
     e.preventDefault();
+    if(!name){
+        alert('Please add text')
+        return 
+    }
+    onAdd({name, date, description,reminder})
+    setName('')
+    setDate('')
+    setDescription('')
+    setReminder(false)
 }
 
     return (
-        <form className='form' onSubmit={onSubmit}>
-            {/* <h2>Add Appointment</h2> */}
+        <form className='add-form' onSubmit={onSubmit}>
+            
             <div className='form-control'>
               <label>Name</label>
               <input 
@@ -22,10 +32,10 @@ const onSubmit=(e)=>{
               onChange={(e)=>setName(e.target.value)} />
             </div>
             <div className='form-control'>
-              <label>Date</label>
+              <label>Date And Time</label>
               <input 
               type='text'
-              placeholder='Enter Date'
+              placeholder='Enter Date And Time'
               value={date} 
               onChange={(e)=>setDate(e.target.value)}/>
             </div>
@@ -37,8 +47,8 @@ const onSubmit=(e)=>{
               value={description} 
               onChange={(e)=>setDescription(e.target.value)}/>
             </div>
-            <div className='form-control'>
-              <label>Description</label>
+            <div className='form-control form-control-check'>
+              <label>Reminder</label>
               <input 
               type='checkbox'
               checked={reminder}

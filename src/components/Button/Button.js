@@ -1,9 +1,12 @@
 import './Button.css'
 
-const Button = () => {
+const Button = ({text, color, onClick}) => {
     return (
         <div>
-            <button className='btn'>Add Appointments</button>
+            <button 
+            onClick={onClick}
+            className='btn'
+            style={{backgroundColor:color}}>{text}</button>
         </div>
     )
 }
