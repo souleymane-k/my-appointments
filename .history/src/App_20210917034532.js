@@ -5,7 +5,7 @@ import AddAppointment from './components/AddAppointment/AddAppointment'
 import './App.css';
 
 function App() {
-  const [showAddAppointment, setShowAddAppointment]= useState(false);
+  const [showAddAppointment, setShowAddAppointment]=useState(false);
   const [appointments, setAppointments] = useState(
     [
        {
